@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: arial, helvetica, sans-serif; }
 
 header {
   background-color: #e5edfc;
@@ -10,25 +11,31 @@ header {
   align-items: center; }
   header .logo {
     padding: 5px;
-    max-width: 60px; }
+    max-width: 48px; }
   header h1 {
     margin: 0;
-    padding: 5px; }
+    font-size: 1.5em;
+    padding: 5px;
+    color: #1a59c8; }
 
 #task-form {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  font-size: 1.2em; }
   #task-form input {
     flex: 1;
-    padding: 5px;
+    padding: 10px;
     box-sizing: border-box;
     border: 1px solid #74a0ed;
-    background-color: #e5edfc; }
+    background-color: #fbfdff;
+    font-size: inherit; }
   #task-form input:focus {
     background-color: white;
     outline: none; }
   #task-form button {
     max-width: 100px;
-    padding: 5px;
+    padding: 10px;
     background-color: #1a59c8;
-    color: white; }
+    color: white;
+    border: 1px solid #74a0ed;
+    font-size: inherit; }

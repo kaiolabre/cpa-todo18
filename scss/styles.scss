@@ -8,6 +8,11 @@ $font-family: arial,helvetica,sans-serif;
   padding:0;
 }
 
+@mixin list-reset{
+  @include reset;
+  list-style: none;
+}
+
 @mixin display($type){
   display: $type;
 }
@@ -61,5 +66,18 @@ header{
     color: white;
     border:1px solid $theme-color;
     font-size:inherit;
+  }
+}
+
+#task-list{
+  @include list-reset;
+  .task-container{
+    @include flex(row);
+    justify-content: space-between;
+    .task-name{
+      font-size:1.5em;
+      color:darken($theme-color,5%);
+      padding:10px;
+    }
   }
 }

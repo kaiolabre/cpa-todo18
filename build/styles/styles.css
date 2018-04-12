@@ -39,3 +39,16 @@ header {
     color: white;
     border: 1px solid #74a0ed;
     font-size: inherit; }
+
+#task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  #task-list .task-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    #task-list .task-container .task-name {
+      font-size: 1.5em;
+      color: #5d91ea;
+      padding: 10px; }

@@ -44,17 +44,21 @@ class TaskManager{
 }
 
 class Template{
-  template:HTMLTemplateElement;
-  constructor( template_id:string){
-    //let id = '#' + template_id;
-    this.template = (<HTMLTemplateElement>document.getElementById( template_id ));
+  template:string;
+  constructor(template_name){
+
   }
   populate(id:string, name:string, status:string){
-    let tmp = <HTMLElement>this.template.content.cloneNode(true);
-    tmp.querySelector('li').setAttribute('id',id);
-    tmp.querySelector('li').setAttribute('data-status',status.toString() );
-    (<HTMLElement> tmp.querySelector('.task-name')).innerText = name;
-    return tmp;
+    let task:any =  `<li id="${id}" data-status="${status}">
+                <div class="task-container">
+                <div class="task-name">${name}</div>
+                <div class="task-buttons">
+                  <button type="button" data-function="done">done</button>
+                  <button type="button" data-function="delete">delete</button>
+                </div>
+                </div>
+            </li>`;
+    return task;
   }
 }
 
@@ -73,7 +77,9 @@ class ListView{
     let name = task.name;
     let status = task.status.toString();
     let item = tasktemplate.populate(id,name,status);
-    this.list.appendChild( item );
+    // convert our string to HTML Node
+    let fragment = document.createRange().createContextualFragment(item);
+    this.list.appendChild( fragment );
     });
   }
 }

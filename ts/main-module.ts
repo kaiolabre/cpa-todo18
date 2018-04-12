@@ -44,10 +44,10 @@ class TaskManager{
 }
 
 class Template{
-  template:NodeList;
+  template:HTMLElement;
   constructor( template_id:string){
     let id = '#' + template_id;
-    this.template = (<NodeList>document.querySelector( id )).content.cloneNode( true );
+    this.template = (<HTMLMetadata>document.getElementById( id )).content.cloneNode( true );
   }
   populate(id:number, name:string, status:boolean){
 

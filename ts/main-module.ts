@@ -1,9 +1,9 @@
 class Task{
-  id: number;
+  id: string;
   name: string;
   status: boolean;
   constructor(taskname: string){
-    this.id = new Date().getTime();
+    this.id = new Date().getTime().toString();
     this.name = taskname;
     this.status = false;
   }
@@ -21,7 +21,7 @@ class TaskManager{
   remove(id:number){
     let index_to_remove:number = undefined;
     this.tasks.forEach( (item:Task, index:number) => {
-      if(item.id == id){
+      if(parseInt( item.id ) == id){
         index_to_remove = index;
       }
     });
@@ -31,7 +31,7 @@ class TaskManager{
   }
   changeStatus(id:number){
     this.tasks.forEach( (item:Task) => {
-      if( item.id == id ){
+      if( parseInt( item.id ) == id ){
         if( item.status == false ){
           item.status = true;
         }
@@ -44,13 +44,17 @@ class TaskManager{
 }
 
 class Template{
-  template:NodeList;
+  template:HTMLTemplateElement;
   constructor( template_id:string){
-    let id = '#' + template_id;
-    this.template = (<NodeList>document.querySelector( id )).content.cloneNode( true );
+    //let id = '#' + template_id;
+    this.template = (<HTMLTemplateElement>document.getElementById( template_id ));
   }
-  populate(id:number, name:string, status:boolean){
-
+  populate(id:string, name:string, status:string){
+    let tmp = <HTMLElement>this.template.content.cloneNode(true);
+    tmp.querySelector('li').setAttribute('id',id);
+    tmp.querySelector('li').setAttribute('data-status',status.toString() );
+    (<HTMLElement> tmp.querySelector('.task-name')).innerText = name;
+    return tmp;
   }
 }
 
@@ -64,16 +68,23 @@ class ListView{
   }
   render( items:Array<Task> ){
     //render array using template
+    items.forEach( (task) => {
+    let id= task.id;
+    let name = task.name;
+    let status = task.status.toString();
+    let item = tasktemplate.populate(id,name,status);
+    this.list.appendChild( item );
+    });
   }
 }
 //array to store tasks
 var taskarray: Array<Task> = [];
 //Task Manager class, pass the task array
-var taskmanager = new TaskManager( TaskArray );
+var taskmanager = new TaskManager( taskarray );
 //list view
 var listview = new ListView('task-list');
 //task template
-var template = new Template('task-template');
+var tasktemplate = new Template('task-template');
 
 
 
@@ -86,4 +97,6 @@ taskform.addEventListener('submit', ( event: Event) => {
   let task:Task = new Task(taskname);
   taskmanager.add( task);
   taskform.reset();
+  listview.clear();
+  listview.render( taskarray );
 });

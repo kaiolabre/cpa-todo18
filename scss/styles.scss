@@ -71,6 +71,9 @@ header{
 
 #task-list{
   @include list-reset;
+  li{
+    border-bottom: 1px solid lighten($theme-color,10%);
+  }
   .task-container{
     @include flex(row);
     justify-content: space-between;
@@ -78,6 +81,23 @@ header{
       font-size:1.5em;
       color:darken($theme-color,5%);
       padding:10px;
+      flex:1;
+    }
+    .task-buttons{
+      width:120px;
+      @include flex(row);
+      button{
+        width:60px;
+        box-sizing: border-box;
+        padding:12px;
+        background-color: transparent;
+        color:darken($theme-color,5%);
+        font-size:1.5em;
+        border:1px solid transparent;
+      }
+      button:focus{
+        outline: none;
+      }
     }
   }
 }

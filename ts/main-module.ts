@@ -9,6 +9,18 @@ class Task{
   }
 }
 
+class DataStorage{
+  constructor(){
+
+  }
+  retrieve(){
+
+  }
+  store( tasks:Array <Task> ){
+
+  }
+}
+
 class TaskManager{
   tasks: Array<Task>;
   constructor(arrayname: Array<Task>){
@@ -16,12 +28,11 @@ class TaskManager{
   }
   add(task:Task){
     this.tasks.push(task);
-    console.log( this.tasks );
   }
-  remove(id:number){
+  remove(id:string){
     let index_to_remove:number = undefined;
     this.tasks.forEach( (item:Task, index:number) => {
-      if(parseInt( item.id ) == id){
+      if(item.id  == id){
         index_to_remove = index;
       }
     });
@@ -29,32 +40,36 @@ class TaskManager{
       this.tasks.splice( index_to_remove, 1 );
     }
   }
-  changeStatus(id:number){
-    this.tasks.forEach( (item:Task) => {
-      if( parseInt( item.id ) == id ){
-        if( item.status == false ){
-          item.status = true;
+  changeStatus(id:string,callback):void{
+    this.tasks.forEach( (task:Task) => {
+      if(task.id  === id){
+        if( task.status == false ){
+          task.status = true;
+          return;
         }
         else{
-          item.status = false;
+          task.status = false;
         }
       }
     });
+    callback();
+    console.log( this.tasks );
   }
+
 }
 
 class Template{
   template:string;
-  constructor(template_name){
-
+  constructor(){
+    //not being used right now
   }
   populate(id:string, name:string, status:string){
-    let task:any =  `<li id="${id}" data-status="${status}">
+    let task:string =  `<li id="${id}" data-status="${status}">
                 <div class="task-container">
                 <div class="task-name">${name}</div>
                 <div class="task-buttons">
-                  <button type="button" data-function="done">done</button>
-                  <button type="button" data-function="delete">delete</button>
+                  <button type="button" data-function="done">&#x2714;</button>
+                  <button type="button" data-function="delete">&times;</button>
                 </div>
                 </div>
             </li>`;
@@ -71,6 +86,7 @@ class ListView{
     this.list.innerHTML = '';
   }
   render( items:Array<Task> ){
+    //clear the view
     //render array using template
     items.forEach( (task) => {
     let id= task.id;
@@ -83,6 +99,8 @@ class ListView{
     });
   }
 }
+
+//----INITIALISE CLASSES
 //array to store tasks
 var taskarray: Array<Task> = [];
 //Task Manager class, pass the task array
@@ -90,12 +108,13 @@ var taskmanager = new TaskManager( taskarray );
 //list view
 var listview = new ListView('task-list');
 //task template
-var tasktemplate = new Template('task-template');
+var tasktemplate = new Template();
 
 
 
 //reference to form
 const taskform:HTMLFormElement = (<HTMLFormElement>document.getElementById('task-form'));
+//add listener to form
 taskform.addEventListener('submit', ( event: Event) => {
   event.preventDefault();
   let input:HTMLElement = document.getElementById('task-input');
@@ -105,4 +124,20 @@ taskform.addEventListener('submit', ( event: Event) => {
   taskform.reset();
   listview.clear();
   listview.render( taskarray );
+});
+
+//add listener to list
+const listelement:HTMLElement = document.getElementById('task-list');
+//add listener to list
+listelement.addEventListener('click', (event:Event) => {
+  console.log(event.target);
+  let target:HTMLElement = <HTMLElement> event.target;
+  if( target.getAttribute('data-function') == 'done' ){
+    let id = target.getAttribute('id');
+    taskmanager.changeStatus(id,() => {
+      listview.clear();
+      listview.render( taskarray );
+    });
+  }
+
 });

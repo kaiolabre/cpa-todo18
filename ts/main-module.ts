@@ -69,11 +69,11 @@ class ListView{
   render( items:Array<Task> ){
     //render array using template
     items.forEach( (task) => {
-    let id= task.id;
-    let name = task.name;
-    let status = task.status.toString();
-    let item = tasktemplate.populate(id,name,status);
-    this.list.appendChild( item );
+      let id= task.id;
+      let name = task.name;
+      let status = task.status.toString();
+      let item = tasktemplate.populate(id,name,status);
+      this.list.appendChild( item );
     });
   }
 }

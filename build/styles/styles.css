@@ -48,11 +48,7 @@ header {
     background-color: #1a59c8;
     color: white;
     border: 1px solid #74a0ed;
-<<<<<<< HEAD
-    font-size: inherit; }
-=======
     font-size: 1.5em; }
->>>>>>> 8ef43cc7b5b189babf8c16a582d4501c2a869303
 
 main {
   max-height: 85vh;
@@ -80,12 +76,58 @@ main {
         margin: 0;
         font-size: 1.5em;
         color: #5d91ea;
-<<<<<<< HEAD
-        word-break: break-all; }
-=======
         word-break: break-all;
         text-transform: capitalize; }
->>>>>>> 8ef43cc7b5b189babf8c16a582d4501c2a869303
+      #task-list .task-container .task-label .task-age {
+        font-size: 0.8em;
+        color: rgba(23, 79, 177, 0.5);
+        margin: 2px; }
+    #task-list .task-container .task-buttons {
+      width: 120px;
+      display: flex;
+      flex-direction: row; }
+      #task-list .task-container .task-buttons button {
+        width: 60px;
+        box-sizing: border-box;
+        padding: 12px;
+        background-color: transparent;
+        color: #5d91ea;
+        font-size: 1.5em;
+        border: 1px solid transparent;
+        text-decoration: none; }
+      #task-list .task-container .task-buttons button:focus {
+        outline: none;
+        background-color: #e5edfc; }
+      #task-list .task-container .task-buttons button[data-function='status'] {
+        font-size: 1em; }
+
+main {
+  max-height: 85vh;
+  overflow-y: scroll; }
+
+#task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  #task-list li {
+    border-bottom: 1px solid #a1bff3; }
+  #task-list li[data-status='true'] .task-label .task-name {
+    text-decoration: line-through;
+    color: #b8cef6; }
+  #task-list li[data-status='true'] .task-container .task-buttons button[data-function='status'] {
+    color: #b8cef6; }
+  #task-list .task-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    #task-list .task-container .task-label {
+      padding: 10px;
+      flex: 1; }
+      #task-list .task-container .task-label .task-name {
+        margin: 0;
+        font-size: 1.5em;
+        color: #5d91ea;
+        word-break: break-all; }
       #task-list .task-container .task-label .task-age {
         font-size: 0.8em;
         color: rgba(23, 79, 177, 0.5);

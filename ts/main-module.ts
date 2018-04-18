@@ -27,21 +27,13 @@ var taskmanager = new TaskManager( taskarray );
 //list view
 var listview = new ListView('task-list');
 //task template
-<<<<<<< HEAD
-var tasktemplate = new Template();
-=======
 export var tasktemplate = new Template();
->>>>>>> 8ef43cc7b5b189babf8c16a582d4501c2a869303
 
 
 //things to do when app loads
 window.addEventListener('load',init);
 function init(){
-<<<<<<< HEAD
-  //read from storage
-=======
   //read tasks from storage and display
->>>>>>> 8ef43cc7b5b189babf8c16a582d4501c2a869303
   taskstorage.read( (data) => {
     if( data.length > 0 ){
       data.forEach( (item) => {

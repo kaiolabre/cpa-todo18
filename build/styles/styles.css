@@ -43,11 +43,16 @@ header {
     outline: none; }
   #task-form button {
     max-width: 100px;
+    min-width: 50px;
     padding: 10px;
     background-color: #1a59c8;
     color: white;
     border: 1px solid #74a0ed;
+<<<<<<< HEAD
     font-size: inherit; }
+=======
+    font-size: 1.5em; }
+>>>>>>> 8ef43cc7b5b189babf8c16a582d4501c2a869303
 
 main {
   max-height: 85vh;
@@ -75,7 +80,12 @@ main {
         margin: 0;
         font-size: 1.5em;
         color: #5d91ea;
+<<<<<<< HEAD
         word-break: break-all; }
+=======
+        word-break: break-all;
+        text-transform: capitalize; }
+>>>>>>> 8ef43cc7b5b189babf8c16a582d4501c2a869303
       #task-list .task-container .task-label .task-age {
         font-size: 0.8em;
         color: rgba(23, 79, 177, 0.5);

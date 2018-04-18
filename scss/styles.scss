@@ -68,11 +68,78 @@ header{
   }
   button{
     max-width:100px;
+    min-width:50px;
     padding:10px;
     background-color: $theme-dark;
     color: white;
     border:1px solid $theme-color;
-    font-size:inherit;
+    font-size:1.5em;
+  }
+}
+main{
+  max-height:85vh;
+  overflow-y: scroll;
+}
+#task-list{
+  @include list-reset;
+  li{
+    border-bottom: 1px solid lighten($theme-color,10%);
+  }
+  li[data-status='true']{
+    .task-label{
+      .task-name{
+        text-decoration: line-through;
+        color:lighten($theme-color,15%);
+      }
+    }
+    .task-container{
+      .task-buttons{
+        button[data-function='status']{
+          color:lighten($theme-color,15%);
+        }
+      }
+    }
+  }
+  .task-container{
+    @include flex(row);
+    justify-content: space-between;
+    .task-label{
+      padding:10px;
+      flex:1;
+      .task-name{
+        margin:0;
+        font-size:1.5em;
+        color:darken($theme-color,5%);
+        word-break: break-all;
+        text-transform: capitalize;
+      }
+      .task-age{
+        font-size:0.8em;
+        color: rgba(darken( $theme-color, 30%),0.5);
+        margin:2px;
+      }
+    }
+    .task-buttons{
+      width:120px;
+      @include flex(row);
+      button{
+        width:60px;
+        box-sizing: border-box;
+        padding:12px;
+        background-color: transparent;
+        color:darken($theme-color,5%);
+        font-size:1.5em;
+        border:1px solid transparent;
+        text-decoration: none;
+      }
+      button:focus{
+        outline: none;
+        background-color:lighten($theme-color,25%);
+      }
+      button[data-function='status']{
+        font-size:1em;
+      }
+    }
   }
 }
 main{

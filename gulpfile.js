@@ -58,7 +58,7 @@ gulp.task('assets', function(){
 	.pipe(gulp.dest(buildpath+'/images'));
 });
 
-gulp.task('build', ['html','sass','ts']);
+gulp.task('build', ['html','sass','ts','assets']);
 
 gulp.task('watch', function(){
   runsequence('sass','html','ts','assets','browserSync',function(e){

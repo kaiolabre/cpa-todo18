@@ -34,5 +34,9 @@
     "tsify": "^3.0.4",
     "typescript": "^2.8.1",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "moment": "^2.22.1",
+    "save": "^2.3.2"
   }
 }

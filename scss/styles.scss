@@ -68,11 +68,12 @@ header{
   }
   button{
     max-width:100px;
+    min-width:50px;
     padding:10px;
     background-color: $theme-dark;
     color: white;
     border:1px solid $theme-color;
-    font-size:inherit;
+    font-size:1.5em;
   }
 }
 main{

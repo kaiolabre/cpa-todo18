@@ -13,7 +13,6 @@ function getParentId(elm:Node){
     if( id ){
       return id;
     }
-    callback();
   }
   return null;
 }

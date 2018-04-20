@@ -28,9 +28,9 @@ Is a branch that was built as a reference design.
 To checkout the *class* branch, after you clone the project, run
 
 ```bash
-git checkout -b class
+git checkout class
 ```
 To check out the *master* branch, run
 ```bash
-git checkout -b master
+git checkout master
 ```

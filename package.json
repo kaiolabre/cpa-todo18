@@ -36,7 +36,6 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "moment": "^2.22.1",
-    "save": "^2.3.2"
+    "moment": "^2.22.1"
   }
 }

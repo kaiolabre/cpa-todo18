@@ -1,0 +1,24 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "au.edu.ait.kaio"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "au.edu.ait.kaio"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "au.edu.ait.kaio"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "au.edu.ait.kaio"
+    }
+  },
+  "dependent_plugins": {}
+}
